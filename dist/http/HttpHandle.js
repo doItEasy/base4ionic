@@ -11,15 +11,15 @@ var HttpHandle = (function () {
         this.uiService = uiService;
         events.subscribe('request:before', function (url, options) {
             uiService.showLoading();
-            console.log('%c 请求前 %c', 'color:blue', '', 'url', url, 'options', options);
+            // console.log('%c 请求前 %c', 'color:blue', '', 'url', url, 'options', options);
         });
         events.subscribe('request:success', function (url, options, res) {
             uiService.hideLoading();
-            console.log('%c 请求成功 %c', 'color:green', '', 'url', url, 'options', options, 'res', res);
+            // console.log('%c 请求成功 %c', 'color:green', '', 'url', url, 'options', options, 'res', res);
         });
         events.subscribe('request:error', function (url, options, error) {
             uiService.hideLoading();
-            console.log('%c 请求失败 %c', 'color:red', '', 'url', url, 'options', options, 'error', error);
+            // console.log('%c 请求失败 %c', 'color:red', '', 'url', url, 'options', options, 'error', error);
             var status = error.status;
             if (status === 0) {
                 uiService.showToast('服务连接失败');
