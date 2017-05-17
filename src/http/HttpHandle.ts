@@ -9,17 +9,17 @@ import { UIService } from "../provider/UIService";
 @Injectable()
 export class HttpHandle {
   constructor(public events: Events, public uiService: UIService) {
-    events.subscribe('request:before', (url:string, options:any) => {
+    events.subscribe('request:before', (url:string, options?:any) => {
       uiService.showLoading();
       console.log('%c 请求前 %c', 'color:blue', '', 'url', url, 'options', options);
     });
 
-    events.subscribe('request:success', (url:string, options:any, res:any) => {
+    events.subscribe('request:success', (url:string, options?:any, res?:any) => {
       uiService.hideLoading();
       console.log('%c 请求成功 %c', 'color:green', '', 'url', url, 'options', options, 'res', res);
     });
 
-    events.subscribe('request:error', (url:string, options:any, error:any) => {
+    events.subscribe('request:error', (url:string, options?:any, error?:any) => {
       uiService.hideLoading();
       console.log('%c 请求失败 %c', 'color:red', '', 'url', url, 'options', options, 'error', error);
       let status = error.status;
