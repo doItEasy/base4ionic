@@ -2,7 +2,9 @@
  * http请求handle
  */
 import { Events } from 'ionic-angular';
+import { UIService } from "../provider/UIService";
 export declare class HttpHandle {
     events: Events;
-    constructor(events: Events);
+    private uiService;
+    constructor(events: Events, uiService: UIService);
 }
