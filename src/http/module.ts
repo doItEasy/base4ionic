@@ -8,6 +8,8 @@ import {HttpHandle } from './HttpHandle';
 import {UIService} from '../provider/UIService'
 import { Toast} from '@ionic-native/toast';
 
+
+
 @NgModule({
 	imports: [IonicModule,HttpModule],
 	providers: [
