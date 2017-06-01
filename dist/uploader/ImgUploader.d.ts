@@ -1,7 +1,7 @@
 import { Camera } from '@ionic-native/camera';
 import { Transfer } from '@ionic-native/transfer';
 import { ActionSheetController, LoadingController } from 'ionic-angular';
-import { UploadOptions } from './upload.model';
+import { UploadOptions } from './upload.option';
 export declare class ImgUploader {
     actionSheetCtrl: ActionSheetController;
     private camera;

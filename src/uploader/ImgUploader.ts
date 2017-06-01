@@ -6,7 +6,7 @@ import {Injectable} from '@angular/core';
 import {Camera, CameraOptions} from '@ionic-native/camera'
 import {Transfer, TransferObject} from '@ionic-native/transfer'
 import {ActionSheetController, LoadingController} from 'ionic-angular';
-import {UploadOptions} from './upload.model'
+import {UploadOptions} from './upload.option'
 @Injectable()
 export class ImgUploader {
     constructor(public actionSheetCtrl: ActionSheetController,

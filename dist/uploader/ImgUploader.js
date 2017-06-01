@@ -7,7 +7,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 import { Injectable } from '@angular/core';
+import { Camera } from '@ionic-native/camera';
+import { Transfer } from '@ionic-native/transfer';
+import { ActionSheetController, LoadingController } from 'ionic-angular';
 var ImgUploader = (function () {
     function ImgUploader(actionSheetCtrl, camera, loadCtrl, transfer) {
         this.actionSheetCtrl = actionSheetCtrl;
@@ -156,7 +162,11 @@ var ImgUploader = (function () {
     return ImgUploader;
 }());
 ImgUploader = __decorate([
-    Injectable()
+    Injectable(),
+    __metadata("design:paramtypes", [ActionSheetController,
+        Camera,
+        LoadingController,
+        Transfer])
 ], ImgUploader);
 export { ImgUploader };
 //# sourceMappingURL=ImgUploader.js.map

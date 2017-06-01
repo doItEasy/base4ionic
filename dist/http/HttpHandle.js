@@ -4,22 +4,30 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+/**
+ * http请求handle
+ */
+import { Events } from 'ionic-angular';
 import { Injectable } from '@angular/core';
+import { UIService } from "../provider/UIService";
 var HttpHandle = (function () {
     function HttpHandle(events, uiService) {
         this.events = events;
         this.uiService = uiService;
         events.subscribe('request:before', function (url, options) {
             uiService.showLoading();
-            // console.log('%c 请求前 %c', 'color:blue', '', 'url', url, 'options', options);
+            console.log('%c 请求前 %c', 'color:blue', '', 'url', url, 'options', options);
         });
         events.subscribe('request:success', function (url, options, res) {
             uiService.hideLoading();
-            // console.log('%c 请求成功 %c', 'color:green', '', 'url', url, 'options', options, 'res', res);
+            console.log('%c 请求成功 %c', 'color:green', '', 'url', url, 'options', options, 'res', res);
         });
         events.subscribe('request:error', function (url, options, error) {
             uiService.hideLoading();
-            // console.log('%c 请求失败 %c', 'color:red', '', 'url', url, 'options', options, 'error', error);
+            console.log('%c 请求失败 %c', 'color:red', '', 'url', url, 'options', options, 'error', error);
             var status = error.status;
             if (status === 0) {
                 uiService.showToast('服务连接失败');
@@ -38,7 +46,8 @@ var HttpHandle = (function () {
     return HttpHandle;
 }());
 HttpHandle = __decorate([
-    Injectable()
+    Injectable(),
+    __metadata("design:paramtypes", [Events, UIService])
 ], HttpHandle);
 export { HttpHandle };
 //# sourceMappingURL=HttpHandle.js.map

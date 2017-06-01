@@ -4,12 +4,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 /**
  * 用户交互反馈
  *
  * 规划：1.环境判断   2.loading效果  3.提示(toast)  4.网络判断
  */
 import { Injectable } from '@angular/core';
+import { ToastController, LoadingController, Platform, AlertController } from 'ionic-angular';
+import { Toast } from '@ionic-native/toast';
+import { Network } from '@ionic-native/network';
 var UIService = (function () {
     function UIService(platform, toastCtrl, loadingCtrl, alertCtrl, network, toast) {
         this.platform = platform;
@@ -182,7 +188,13 @@ var UIService = (function () {
     return UIService;
 }());
 UIService = __decorate([
-    Injectable()
+    Injectable(),
+    __metadata("design:paramtypes", [Platform,
+        ToastController,
+        LoadingController,
+        AlertController,
+        Network,
+        Toast])
 ], UIService);
 export { UIService };
 //# sourceMappingURL=UIService.js.map

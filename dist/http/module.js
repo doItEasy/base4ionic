@@ -12,19 +12,26 @@ import { httpFactory } from './WrappedHttp';
 import { HttpHandle } from './HttpHandle';
 import { UIService } from '../provider/UIService';
 import { Toast } from '@ionic-native/toast';
-var HttpExtModule = (function () {
+import { Network } from '@ionic-native/network';
+var HttpExtModule = HttpExtModule_1 = (function () {
     function HttpExtModule() {
     }
+    HttpExtModule.forRoot = function () {
+        return {
+            ngModule: HttpExtModule_1,
+            providers: [
+                { provide: Http, useFactory: httpFactory, deps: [XHRBackend, RequestOptions, HttpHandle] },
+                HttpHandle, UIService, Toast, Network
+            ]
+        };
+    };
     return HttpExtModule;
 }());
-HttpExtModule = __decorate([
+HttpExtModule = HttpExtModule_1 = __decorate([
     NgModule({
-        imports: [IonicModule, HttpModule],
-        providers: [
-            { provide: Http, useFactory: httpFactory, deps: [XHRBackend, RequestOptions, HttpHandle] },
-            HttpHandle, UIService, Toast
-        ]
+        imports: [IonicModule, HttpModule]
     })
 ], HttpExtModule);
 export { HttpExtModule };
+var HttpExtModule_1;
 //# sourceMappingURL=module.js.map

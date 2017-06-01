@@ -1,6 +1,7 @@
-export { HttpExtModule } from './http/module';
-export { UploadModule } from './uploader/module';
-export { UIService } from './provider/UIService';
-export { HttpHandle } from './http/HttpHandle';
-export { WrappedHttp } from './http/WrappedHttp';
+export * from './http/module';
+export * from './uploader/module';
+export * from './provider/UIService';
+export * from './http/HttpHandle';
+export * from './http/WrappedHttp';
+export * from './uploader/ImgUploader';
 //# sourceMappingURL=index.js.map

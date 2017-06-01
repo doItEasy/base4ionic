@@ -9,18 +9,24 @@ import { IonicModule } from 'ionic-angular';
 import { ImgUploader } from './ImgUploader';
 import { Camera } from '@ionic-native/camera';
 import { Transfer } from '@ionic-native/transfer';
-var UploadModule = (function () {
+var UploadModule = UploadModule_1 = (function () {
     function UploadModule() {
     }
+    UploadModule.forRoot = function () {
+        return {
+            ngModule: UploadModule_1,
+            providers: [
+                ImgUploader, Camera, Transfer
+            ]
+        };
+    };
     return UploadModule;
 }());
-UploadModule = __decorate([
+UploadModule = UploadModule_1 = __decorate([
     NgModule({
-        imports: [IonicModule],
-        providers: [
-            Camera, Transfer, ImgUploader
-        ]
+        imports: [IonicModule]
     })
 ], UploadModule);
 export { UploadModule };
+var UploadModule_1;
 //# sourceMappingURL=module.js.map
