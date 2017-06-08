@@ -1,12 +1,6 @@
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
+/**
+ * 拍照上传图片服务
+ */
 import { Injectable } from '@angular/core';
 import { Camera } from '@ionic-native/camera';
 import { Transfer } from '@ionic-native/transfer';
@@ -97,6 +91,7 @@ var ImgUploader = (function () {
         return new Promise(function (resolve, reject) {
             var image = new Image();
             image.src = base64;
+            //图片加载完毕之后进行压缩，然后上传
             if (image.complete) {
                 render();
             }
@@ -125,6 +120,7 @@ var ImgUploader = (function () {
                 var con = canvas.getContext('2d');
                 con.clearRect(0, 0, canvas.width, canvas.height);
                 con.drawImage(image, 0, 0, imageWidth, imageHeight);
+                //进行最小压缩
                 var ndata = canvas.toDataURL('image/jpeg', 0.5);
                 resolve(ndata);
             }
@@ -156,12 +152,15 @@ var ImgUploader = (function () {
     };
     return ImgUploader;
 }());
-ImgUploader = __decorate([
-    Injectable(),
-    __metadata("design:paramtypes", [ActionSheetController,
-        Camera,
-        LoadingController,
-        Transfer])
-], ImgUploader);
 export { ImgUploader };
+ImgUploader.decorators = [
+    { type: Injectable },
+];
+/** @nocollapse */
+ImgUploader.ctorParameters = function () { return [
+    { type: ActionSheetController, },
+    { type: Camera, },
+    { type: LoadingController, },
+    { type: Transfer, },
+]; };
 //# sourceMappingURL=ImgUploader.js.map

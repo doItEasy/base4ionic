@@ -1,12 +1,8 @@
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
+/**
+ * 用户交互反馈
+ *
+ * 规划：1.环境判断   2.loading效果  3.提示(toast)  4.网络判断
+ */
 import { Injectable } from '@angular/core';
 import { ToastController, LoadingController, Platform, AlertController } from 'ionic-angular';
 import { Toast } from '@ionic-native/toast';
@@ -21,12 +17,24 @@ var UIService = (function () {
         this.toast = toast;
         this.loadRunning = false;
     }
+    /**
+     * 是否真机环境
+     * @return {boolean}
+     */
     UIService.prototype.isMobile = function () {
         return this.platform.is('mobile') && !this.platform.is('mobileweb');
     };
+    /**
+     * 是否android
+     * @return {boolean}
+     */
     UIService.prototype.isAndroid = function () {
         return this.isMobile() && this.platform.is('android');
     };
+    /**
+     * 是否ios
+     * @return {boolean}
+     */
     UIService.prototype.isIos = function () {
         return this.isMobile() && (this.platform.is('ios') || this.platform.is('ipad') || this.platform.is('iphone'));
     };
@@ -102,6 +110,9 @@ var UIService = (function () {
         });
         alert.present();
     };
+    /**
+     * 1.5秒后显示loading
+     */
     UIService.prototype.showLoading = function (content) {
         var _this = this;
         if (content === void 0) { content = ''; }
@@ -121,6 +132,9 @@ var UIService = (function () {
         }
     };
     ;
+    /**
+     *立刻显示loading
+     */
     UIService.prototype.showLoadingNow = function (content) {
         var _this = this;
         if (content === void 0) { content = ''; }
@@ -136,6 +150,9 @@ var UIService = (function () {
         }
     };
     ;
+    /**
+     * 关闭loading
+     */
     UIService.prototype.hideLoading = function () {
         if (this.loadRunning) {
             this.loading.dismiss();
@@ -143,25 +160,35 @@ var UIService = (function () {
         }
     };
     ;
+    /**
+     * 获取网络类型 如`unknown`, `ethernet`, `wifi`, `2g`, `3g`, `4g`, `cellular`, `none`
+     */
     UIService.prototype.getNetworkType = function () {
         if (!this.isMobile()) {
             return 'wifi';
         }
         return this.network.type;
     };
+    /**
+     * 判断是否有网络
+     * @returns {boolean}
+     */
     UIService.prototype.isConnecting = function () {
         return this.getNetworkType() != 'none';
     };
     return UIService;
 }());
-UIService = __decorate([
-    Injectable(),
-    __metadata("design:paramtypes", [Platform,
-        ToastController,
-        LoadingController,
-        AlertController,
-        Network,
-        Toast])
-], UIService);
 export { UIService };
+UIService.decorators = [
+    { type: Injectable },
+];
+/** @nocollapse */
+UIService.ctorParameters = function () { return [
+    { type: Platform, },
+    { type: ToastController, },
+    { type: LoadingController, },
+    { type: AlertController, },
+    { type: Network, },
+    { type: Toast, },
+]; };
 //# sourceMappingURL=UIService.js.map
